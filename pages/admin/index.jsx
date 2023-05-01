@@ -18,11 +18,13 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   const status = ["preparing", "on the way", "delivered"];
   const [close, setClose] = useState(true)
   const [closeRec, setCloseRec] = useState(true)
+  const URL  = ("https://bakers-bog-deployed.vercel.app/")
 
 
   const handleProductDelete = async (id) => {
     console.log(id);
-    const BackendURL = process.env.AXIOS_URL + `/api/products/`
+    const BackendURL = URL + `/api/products/`
+    console.log(BackendURL)
     try {
       const res = await axios.delete(
         BackendURL + id
@@ -35,7 +37,8 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
 
   const handleContactDelete = async (id) => {
     console.log(id);
-    const BackendURL = process.env.AXIOS_URL + `/api/contacts/`
+    const BackendURL = URL + `/api/contacts/`
+    console.log(BackendURL)
     try {
       const res = await axios.delete(
         BackendURL + id
@@ -48,7 +51,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
 
   const handleRecipeDelete = async (id) => {
     console.log(id);
-    const BackendURL = process.env.AXIOS_URL + `/api/recipes/`
+    const BackendURL = URL + `/api/recipes/`
     try {
       const res = await axios.delete(
         BackendURL + id
@@ -62,7 +65,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
 
   const handleOrderDelete = async (id) => {
     console.log(id)
-    const BackendURL = process.env.AXIOS_URL + `/api/orders/`
+    const BackendURL = URL + `/api/orders/`
     try {
       const res = await axios.delete(
         BackendURL + id
@@ -76,7 +79,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   const handleStatus = async (id) => {
     const item = orderList.filter((order) => order._id === id)[0];
     const currentStatus = item.status;
-    const BackendURL = process.env.AXIOS_URL + `/api/orders/`
+    const BackendURL = URL + `/api/orders/`
 
     if (currentStatus < 2) { 
       console.log(item.status)
@@ -98,7 +101,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   const handlePrevStatus = async (id) => {
     const item = orderList.filter((order) => order._id === id)[0];
     const currentStatus = item.status;
-    const BackendURL = process.env.AXIOS_URL + `/api/orders/`
+    const BackendURL = URL + `/api/orders/`
 
     if (currentStatus > 0) { 
       console.log(item.status)
@@ -354,6 +357,7 @@ export const getServerSideProps = async (ctx) => {
           const locationRes = await axios.get(process.env.AXIOS_URL + "/api/locations")
           const recipeRes = await axios.get(process.env.AXIOS_URL + "/api/recipes")
           const contactRes = await axios.get(process.env.AXIOS_URL + "/api/contacts")
+          
 
           return {
             props: {

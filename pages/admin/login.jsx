@@ -9,11 +9,12 @@ const Login = () => {
   const [password, setPassword] = useState(null);
   const [error, setError] = useState(false);
   const router = useRouter();
-  const BackendURL = 'https://bakers-bog-deployed.vercel.app/api/login'
+  const URL = 'https://bakers-bog-deployed.vercel.app/'
   
   
 
   const handleClick = async () => {
+    BackendURL = URL + "admin/long"
     try {
       await axios.post(BackendURL, {
         username,
