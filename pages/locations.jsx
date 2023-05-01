@@ -25,7 +25,8 @@ export const getServerSideProps = async (ctx) => {
   if (myCookie.token === process.env.TOKEN) {
     admin = true
   }
-  const res = await axios.get("http://localhost:3000/api/locations");
+  const BackendURL = process.env.AXIOS_URL + `/api/locations`
+  const res = await axios.get(BackendURL);
   return {
     props: {
       locationList: res.data,

@@ -82,7 +82,8 @@ const Recipe = ({ recipe }) => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(`http://localhost:3000/api/recipes/${params.id}`);
+  const BackendURL = process.env.AXIOS_URL + `/api/recipes/${params.id}`
+  const res = await axios.get(BackendURL);
   return {
     props: {
       recipe: res.data,

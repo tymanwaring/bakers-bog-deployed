@@ -20,13 +20,14 @@ export default function Recipes({ recipeList, admin }) {
 }
 
 export const getServerSideProps = async (ctx) => {
+  const BackendURL = process.env.AXIOS_URL + `/api/recipes`
   const myCookie = ctx.req?.cookies || ""
   let admin = false
 
   if (myCookie.token === process.env.TOKEN) {
     admin = true
   }
-  const res = await axios.get("http://localhost:3000/api/recipes");
+  const res = await axios.get(BackendURL);
   return {
     props: {
       recipeList: res.data,
