@@ -6,7 +6,7 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const URL = "https://bakers-bog-deployed.vercel.app/api/contacts"
+  const URL = "https://www.thebakersbog.com/api/contacts"
   
   const handleSubmit = async e => {
     e.preventDefault();

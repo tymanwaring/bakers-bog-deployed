@@ -18,7 +18,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   const status = ["preparing", "on the way", "delivered", "done"];
   const [close, setClose] = useState(true)
   const [closeRec, setCloseRec] = useState(true)
-  const URL  = ("https://bakers-bog-deployed.vercel.app/")
+  const URL  = ("https://www.thebakersbog.com/")
 
 
   const handleProductDelete = async (id) => {

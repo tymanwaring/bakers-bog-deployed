@@ -28,7 +28,7 @@ const Cart = ( products ) => {
   const style = { "layout": "vertical" };
   const dispatch = useDispatch()
   const router = useRouter()
-  const URL  = ("https://bakers-bog-deployed.vercel.app/api/orders")
+  const URL  = ("https://www.thebakersbog.com/api/orders")
 
   const createOrder = async (data) => {
     try {

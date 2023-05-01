@@ -57,7 +57,7 @@ const AddRecipe = ({ setClose }) => {
                 paragraphs,
             };
 
-            await axios.post("http://localhost:3000/api/recipes", newRecipe);
+            await axios.post(URL, newRecipe);
             setClose(true);
         } catch (err) {
             console.log(err);

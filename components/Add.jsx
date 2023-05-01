@@ -11,7 +11,7 @@ const Add = ({ setClose }) => {
     const [prices, setPrices] = useState([])
     const [extraOptions, setExtraOptions] = useState([])
     const [extra, setExtra] = useState(null)
-    const URL = "https://bakers-bog-deployed.vercel.app/api/products"
+    const URL = "https://www.thebakersbog.com/api/products"
 
 
     const changePrice = (e, index) => {
