@@ -117,6 +117,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
 
   return (
     <div className={styles.container}>
+      <TestNav />
       <div className={styles.item}>
 
         {/* Products Table */}
