@@ -11,18 +11,18 @@ const handler = async (req, res) => {
 
   if (method === "GET") {
     try {
-      const contact = await Contact.findById(id);
-      res.status(200).json(contact);
+      const location = await Location.findById(id);
+      res.status(200).json(location);
     } catch (err) {
       res.status(500).json(err);
     }
   }
   if (method === "PUT") {
     try {
-      const contact = await Contact.findByIdAndUpdate(id, req.body, {
+      const location = await Location.findByIdAndUpdate(id, req.body, {
         new: true,
       });
-      res.status(200).json(contact);
+      res.status(200).json(location);
     } catch (err) {
       res.status(500).json(err);
     }
