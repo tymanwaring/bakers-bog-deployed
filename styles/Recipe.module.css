@@ -9,6 +9,9 @@
     animation: fadeIn 3s;
     min-height: 100vh;
     height: 100%;
+    max-width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
   }
   
   .container {
@@ -21,12 +24,9 @@
     background-size: cover;
     background-attachment: fixed;
     min-height: 100vh;
-    height: 100%
-    /* Need to add back in before adding more recepies */
-    /* padding: 20px 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; */
+    height: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .header_boarder {
