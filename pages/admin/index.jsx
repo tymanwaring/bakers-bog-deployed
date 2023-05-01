@@ -15,7 +15,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   const [recipeList, setRecipeList] = useState(recipes);
   const [contactList, setContactList] = useState(contacts);
   const [locationList, setLocationList] = useState(locations);
-  const status = ["preparing", "on the way", "delivered"];
+  const status = ["preparing", "on the way", "delivered", "done"];
   const [close, setClose] = useState(true)
   const [closeRec, setCloseRec] = useState(true)
   const URL  = ("https://bakers-bog-deployed.vercel.app/")
@@ -81,7 +81,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
     const currentStatus = item.status;
     const BackendURL = URL + `/api/orders/`
 
-    if (currentStatus < 2) { 
+    if (currentStatus < 3) { 
       console.log(item.status)
       try {
         const res = await axios.put(BackendURL + id, {
