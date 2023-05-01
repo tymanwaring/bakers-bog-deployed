@@ -14,7 +14,7 @@
 
 .container {
   background-color: rgba(0, 0, 0, 1);
-  background-image: url("./image/Basket.png");
+  background-image: url("../public/img/Basket.png");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;

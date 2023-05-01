@@ -12,7 +12,7 @@
 
 .container {
   background-color: black;
-  background-image: url("./image/Book.png");
+  background-image: url("../public/img/Book.png");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
