@@ -6,7 +6,7 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const URL = "https://bakers-bog-deployed.vercel.app/contacts"
+  const URL = "https://bakers-bog-deployed.vercel.app/api/contacts"
   
   const handleSubmit = async e => {
     e.preventDefault();
@@ -15,9 +15,10 @@ const ContactForm = () => {
       email,
       message,
     };
+    console.log(data)
     await axios.post(URL, data);
 
-    document.getElementById("contact_form").reset()
+    document.getElementById('contact_form').reset()
   };
 
   return (
@@ -50,7 +51,7 @@ const ContactForm = () => {
                   </div>
                 </div>
               </div>
-              <button type="submit">Send</button>
+              <button onClick={() => document.getElementById} type="submit">Send</button>
             </form>
           </div>
         </div>
