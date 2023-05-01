@@ -44,6 +44,7 @@ const AddRecipe = ({ setClose }) => {
             );
 
             const { url } = uploadRes.data;
+            console.log(uploadRes)
             const newRecipe = {
                 title,
                 ingredients,
