@@ -46,7 +46,7 @@ const Add = ({ setClose }) => {
                 extraOptions,
                 img: url,
             };
-
+            console.log(newProduct)
             await axios.post(URL, newProduct);
             setClose(true);
         } catch (err) {
