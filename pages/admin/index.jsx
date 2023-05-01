@@ -23,11 +23,11 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
 
   const handleProductDelete = async (id) => {
     console.log(id);
-    const BackendURL = URL + `/api/products/`
+    const BackendURL = URL + `/api/products/` + id
     console.log(BackendURL)
     try {
       const res = await axios.delete(
-        BackendURL + id
+        BackendURL
       );
       setProductList(productList.filter((product) => product._id !== id));
     } catch (err) {
