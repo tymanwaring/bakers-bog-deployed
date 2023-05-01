@@ -6,6 +6,7 @@ import AddButton from "../../components/AddButton";
 import AddRecipeBtn from "../../components/RecipeAddBtn/AddRecipeBtn";
 import AddRecipe from "../../components/RecipeAddBtn/AddRecipe";
 import Add from "../../components/Add";
+import TestNav from "../../components/TestNav";
 
 const Index = ({ orders, products, recipes, locations, contacts }) => {
   console.log(contacts)
