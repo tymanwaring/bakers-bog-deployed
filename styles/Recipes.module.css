@@ -7,7 +7,7 @@
   background-size: cover;
   background-attachment: fixed;
   animation: fadeIn 3s;
-  height: calc(100vh);
+  height: 100%
 }
 
 .container {
@@ -18,7 +18,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: calc(100vh);
+  height: 100%
   /* Need to add back in before adding more recepies */
   /* padding: 20px 10px;
   display: flex;

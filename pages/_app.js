@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <div>
       <Head>
-        <title>The Baker&aposs Bog</title>
+        <title>The Baker&#39;s Bog</title>
         <meta name="description" content="Best pasteries shop in town" />
       </Head>
       <Provider store={store}>

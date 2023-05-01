@@ -44,7 +44,7 @@ const Add = ({ setClose }) => {
                 desc,
                 prices,
                 extraOptions,
-                img: url,
+                img: uploadRes.data.secure_url,
             };
             console.log(newProduct)
             await axios.post(URL, newProduct);
