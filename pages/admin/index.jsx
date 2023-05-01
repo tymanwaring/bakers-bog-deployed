@@ -21,9 +21,10 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
 
   const handleProductDelete = async (id) => {
     console.log(id);
+    const BackendURL = process.env.AXIOS_URL + `/api/products/`
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/products/" + id
+        BackendURL + id
       );
       setProductList(productList.filter((product) => product._id !== id));
     } catch (err) {
@@ -33,9 +34,10 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
 
   const handleContactDelete = async (id) => {
     console.log(id);
+    const BackendURL = process.env.AXIOS_URL + `/api/contacts/`
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/contacts/" + id
+        BackendURL + id
       );
       setContactList(contactList.filter((contact) => contact._id !== id));
     } catch (err) {
@@ -45,10 +47,10 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
 
   const handleRecipeDelete = async (id) => {
     console.log(id);
-    console.log("http://localhost:3000/api/recipes/" + id)
+    const BackendURL = process.env.AXIOS_URL + `/api/recipes/`
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/recipes/" + id
+        BackendURL + id
       );
       console.log(res)
       setRecipeList(recipeList.filter((recpie) => recpie._id !== id));
@@ -59,9 +61,10 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
 
   const handleOrderDelete = async (id) => {
     console.log(id)
+    const BackendURL = process.env.AXIOS_URL + `/api/orders/`
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/orders/" + id
+        BackendURL + id
       );
       setOrderList(orderList.filter((order) => order._id !== id));
     } catch (err) {
@@ -72,11 +75,12 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   const handleStatus = async (id) => {
     const item = orderList.filter((order) => order._id === id)[0];
     const currentStatus = item.status;
+    const BackendURL = process.env.AXIOS_URL + `/api/orders/`
 
     if (currentStatus < 2) { 
       console.log(item.status)
       try {
-        const res = await axios.put("http://localhost:3000/api/orders/" + id, {
+        const res = await axios.put(BackendURL + id, {
           status: currentStatus + 1,
         });
         setOrderList([
@@ -93,11 +97,12 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   const handlePrevStatus = async (id) => {
     const item = orderList.filter((order) => order._id === id)[0];
     const currentStatus = item.status;
+    const BackendURL = process.env.AXIOS_URL + `/api/orders/`
 
     if (currentStatus > 0) { 
       console.log(item.status)
       try {
-        const res = await axios.put("http://localhost:3000/api/orders/" + id, {
+        const res = await axios.put(BackendURL + id, {
           status: currentStatus - 1,
         });
         setOrderList([
@@ -338,11 +343,11 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-          const productRes = await axios.get("http://localhost:3000/api/products");
-          const orderRes = await axios.get("http://localhost:3000/api/orders");
-          const locationRes = await axios.get("http://localhost:3000/api/locations")
-          const recipeRes = await axios.get("http://localhost:3000/api/recipes")
-          const contactRes = await axios.get("http://localhost:3000/api/contacts")
+          const productRes = await axios.get(process.env.AXIOS_URL + "/api/products");
+          const orderRes = await axios.get(process.env.AXIOS_URL+ "/api/orders");
+          const locationRes = await axios.get(process.env.AXIOS_URL + "/api/locations")
+          const recipeRes = await axios.get(process.env.AXIOS_URL + "/api/recipes")
+          const contactRes = await axios.get(process.env.AXIOS_URL + "/api/contacts")
 
           return {
             props: {
