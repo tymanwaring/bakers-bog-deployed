@@ -28,10 +28,11 @@ const Cart = ( products ) => {
   const style = { "layout": "vertical" };
   const dispatch = useDispatch()
   const router = useRouter()
+  const URL  = ("https://bakers-bog-deployed.vercel.app/api/orders")
 
   const createOrder = async (data) => {
     try {
-      const res = await axios.post("http://localhost:3000/api/orders", data)
+      const res = await axios.post("https://bakers-bog-deployed.vercel.app/api/orders", data)
       console.log(res)
       console.log(res.data._id)
       if (res.status === 201 && router.push("/orders/" + res.data._id)) {

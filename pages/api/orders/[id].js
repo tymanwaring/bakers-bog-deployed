@@ -35,6 +35,7 @@ const handler = async (req, res) => {
       return res.status(401).json("Invalid Permissions")
     }
     try {
+      console.log('trying delete')
       await Order.findByIdAndDelete(id);
       res.status(200).json("The order has been deleted!");
     } catch (err) {
