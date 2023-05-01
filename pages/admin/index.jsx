@@ -117,8 +117,11 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div>
+      
       <TestNav />
+    <div className={styles.container}>
+      
       <div className={styles.item}>
 
         {/* Products Table */}
@@ -329,6 +332,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
                 </table>
                 </div> */}
               </div>
+          </div>
           </div>
           );
 };
