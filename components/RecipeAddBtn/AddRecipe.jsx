@@ -16,7 +16,7 @@ const AddRecipe = ({ setClose }) => {
     const [prices, setPrices] = useState([])
     const [ingredients, setIngredients] = useState([(1, 'Eggs'), (2, 'Butter')])
     const [extra, setExtra] = useState(null)
-    const URL = "https://www.thebakersbog.com/api/recpies"
+    const URL = "https://www.thebakersbog.com/api/recipes"
 
 
     const changePrice = (e, index) => {
