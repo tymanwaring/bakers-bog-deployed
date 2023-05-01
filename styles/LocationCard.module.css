@@ -1,0 +1,28 @@
+.container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    cursor: pointer;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+  
+  .address {
+    font-size: 18px;
+    color: white;
+    padding-top: 8px;
+  }
+  
+  .desc {
+    text-align: center;
+    color: white;
+  }
+  

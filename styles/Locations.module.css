@@ -1,0 +1,32 @@
+.cover{
+  background-color: rgba(0, 0, 0, 0.6);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  animation: fadeIn 1.5s;
+  height: 100vh;
+}
+
+.container {
+  background-color: black;
+  background-image: url("../public/img/bakery_inside.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%
+}
+
+@keyframes fadeIn {
+  0% { 
+    background-color: rgba(0, 0, 0, 0.85);
+   }
+  100% {
+     background-color: rgba(0, 0, 0, 0.6); 
+    }
+}
