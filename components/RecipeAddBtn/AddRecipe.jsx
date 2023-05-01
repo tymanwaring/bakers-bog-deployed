@@ -125,7 +125,7 @@ const AddRecipe = ({ setClose }) => {
                 </div>
 
                 <div className={styles.extraItems}>
-                        {paragraphs.map((option) => (
+                        {ingredients.map((option) => (
                             <span key={option.text} className={styles.extraItem}>
                                 {option.text}
                             </span>
