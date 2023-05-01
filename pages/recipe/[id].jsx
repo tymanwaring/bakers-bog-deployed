@@ -44,8 +44,8 @@ const Recipe = ({ recipe }) => {
             <h3 className = {styles.header_boarder}><br></br></h3>
             <div className = {styles.ingredients}>
               <ul>
-                {recipe.ingrediants?.map((ingrediant) => (
-                  <li className={styles.ingredient} key = {ingrediant._id}>{ingrediant}</li>
+                {recipe.ingredients?.map((ingredient) => (
+                  <li className={styles.ingredient} key = {ingredient._id}>{ingredient}</li>
                 ))}
               </ul>
 

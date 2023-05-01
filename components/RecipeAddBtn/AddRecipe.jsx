@@ -11,26 +11,30 @@ const AddRecipe = ({ setClose }) => {
     const [cook_time, setCook] = useState(null)
     const [category, setCategory] = useState(null)
     const [rating, setRating] = useState(4.5)
-    const [videoLink, setVideoLink] = useState("ytb_link")
-    const [paragraphs, setparagraphs] = useState([])
-    const [prices, setPrices] = useState([])
-    const [ingredients, setIngredients] = useState([(1, 'Eggs'), (2, 'Butter')])
-    const [extra, setExtra] = useState(null)
+    const [videoLink, setVideoLink] = useState("none")
+    const [ingredients, setIngredients] = useState([])
+    const [ingredient, setIngredient] = useState("")
+    const [paragraphs, setParagraphs] = useState([])
+    const [paragraph, setParagraph] = useState("")
     const URL = "https://www.thebakersbog.com/api/recipes"
 
 
-    const changePrice = (e, index) => {
-        const currentPrices = prices;
-        currentPrices[index] = e.target.value;
-        setPrices(currentPrices);
+    const handleIngredientInput = (e) => {
+        setIngredient(e.target.value)
     }
 
-    const handleExtraInput = (e) => {
-        setExtra({ ...extra, [e.target.name]: e.target.value })
+    const handleIngredients = (e) => {
+        setIngredients((prev) => [...prev, ingredient])
+        console.log(ingredients)
     }
 
-    const handleExtra = (e) => {
-        setIngredients((prev) => [...prev, extra]);
+    const handleInstructInput = (e) => {
+        setParagraph(e.target.value)
+    }
+
+    const handleIntructions = (e) => {
+        setParagraphs((prev) => [...prev, paragraph])
+        console.log(paragraphs)
     }
 
     const handleCreate = async () => {
@@ -51,7 +55,7 @@ const AddRecipe = ({ setClose }) => {
                 prep_time,
                 cook_time,
                 desc,
-                img: uploadRes.data.secure_url,
+                img: url,
                 videoLink,
                 rating,
                 category,
@@ -67,16 +71,17 @@ const AddRecipe = ({ setClose }) => {
 
     return (
         <div className={styles.container}>
+            <span onClick={() => setClose(true)} className={styles.close}>
+                X
+            </span>
             <div className={styles.wrapper}>
-                <span onClick={() => setClose(true)} className={styles.close}>
-                    X
-                </span>
+
                 <h1>Add New Recipe</h1>
 
                 {/* Image */}
                 <div className={styles.item}>
                     <label className={styles.label}>Choose an image</label>
-                    <input className = {styles.fileInput} type="file" onChange={(e) => setFile(e.target.files[0])} />
+                    <input className={styles.fileInput} type="file" onChange={(e) => setFile(e.target.files[0])} />
                 </div>
 
                 {/* Title */}
@@ -97,6 +102,34 @@ const AddRecipe = ({ setClose }) => {
                         type="text"
                         onChange={(e) => setDesc(e.target.value)}
                     />
+                </div>
+                
+                {/* Igredients */}
+                <div className = {styles.item}>
+
+                <label className={styles.label}>Ingredients</label>
+                <input
+                    
+                    type="input"
+                    placeholder="2 tablespoons butter"
+                    name="Ingredients"
+                    onChange={handleIngredientInput}
+                />
+                </div>
+                
+
+                <div className = {styles.item}>
+                    <button className={styles.extraButton} onClick={handleIngredients}>
+                        Add
+                    </button>
+                </div>
+
+                <div className={styles.extraItems}>
+                        {paragraphs.map((option) => (
+                            <span key={option.text} className={styles.extraItem}>
+                                {option.text}
+                            </span>
+                        ))}
                 </div>
 
                 {/* Prep Time */}
@@ -130,37 +163,34 @@ const AddRecipe = ({ setClose }) => {
                 </div>
 
                 {/* Instructions */}
-                {/* <div className={styles.item}>
-                    <label className={styles.label}>Instructions</label>
-                    <textarea
-                        rows={4}
-                        type="text"
-                        onChange={(e) => setInstructions(e.target.value)}
-                    />
-                </div> */}
+                <div className = {styles.item}>
 
-                {/* <div className={styles.item}>
-                    <label className={styles.label}>Ingredients</label>
-                    <div className={styles.extra}>
-                        <input
-                            className={`${styles.input}`}
-                            type="text"
-                            placeholder="Item"
-                            name="text"
-                            onChange={handleExtraInput}
-                        />
-                        <button className={styles.extraButton} onClick={handleExtra}>
-                            Add
-                        </button>
-                    </div>
-                    <div className={styles.extraItems}>
-                        {ingredients.map((option) => (
+                <label className={styles.label}>Intructions</label>
+                <textarea
+                    
+                    type="textarea"
+                    rows={4}
+                    placeholder="Preheat oven to 450 then place cookie sheet with..."
+                    name="Instructions"
+                    onChange={handleInstructInput}
+                />
+                </div>
+                
+
+                <div className = {styles.item}>
+                    <button className={styles.extraButton} onClick={handleIntructions}>
+                        Add
+                    </button>
+                </div>
+
+                <div className={styles.extraItems}>
+                        {paragraphs.map((option) => (
                             <span key={option.text} className={styles.extraItem}>
                                 {option.text}
                             </span>
                         ))}
-                    </div>
-                </div> */}
+                </div>
+                
                 <button className={styles.addButton} onClick={handleCreate}>
                     Create
                 </button>
