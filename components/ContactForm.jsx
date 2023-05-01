@@ -15,10 +15,10 @@ const ContactForm = () => {
       email,
       message,
     };
-    console.log(data)
+    document.getElementById('contact_form').reset()
     await axios.post(URL, data);
 
-    document.getElementById('contact_form').reset()
+    
   };
 
   return (
