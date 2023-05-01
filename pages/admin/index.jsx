@@ -97,7 +97,6 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   }
   };
 
-
   const handlePrevStatus = async (id) => {
     const item = orderList.filter((order) => order._id === id)[0];
     const currentStatus = item.status;
