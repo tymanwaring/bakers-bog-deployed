@@ -1,6 +1,6 @@
 .container {
   background-color: black;
-  background-image: url("../public/img/van.png");
+  background-image: url("./image/Van.png");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
