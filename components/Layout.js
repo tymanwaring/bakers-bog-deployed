@@ -7,11 +7,6 @@ const Layout = ({ children }) => {
   return (
     <>
       {/* <Navbar /> */}
-      {(type == "Home" || type == "Products" || type == "Locations" || type == "Contact" || type == "Cart" || type == "Product" || type == "Order" || type == "Recipes" || type == "Recipe") ? (
-        false
-      ) : (
-        <TestNav />
-      )}
 
       {children}
 
