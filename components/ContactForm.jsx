@@ -6,7 +6,8 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-
+  const URL = "https://bakers-bog-deployed.vercel.app/contacts"
+  
   const handleSubmit = async e => {
     e.preventDefault();
     const data = {
@@ -15,7 +16,7 @@ const ContactForm = () => {
       message,
     };
     console.log(data);
-    await axios.post("http://localhost:3000/api/contacts", data);
+    await axios.post(URL, data);
   };
 
   return (

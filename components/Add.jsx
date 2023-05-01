@@ -11,6 +11,7 @@ const Add = ({ setClose }) => {
     const [prices, setPrices] = useState([])
     const [extraOptions, setExtraOptions] = useState([])
     const [extra, setExtra] = useState(null)
+    const URL = "https://bakers-bog-deployed.vercel.app/api/products"
 
 
     const changePrice = (e, index) => {
@@ -46,7 +47,7 @@ const Add = ({ setClose }) => {
                 img: url,
             };
 
-            await axios.post("http://localhost:3000/api/products", newProduct);
+            await axios.post(URL, newProduct);
             setClose(true);
         } catch (err) {
             console.log(err);
