@@ -14,7 +14,6 @@ export default function Recipes({ recipeList, admin }) {
         {/* {Scrolling background Make sure it scrolls with the items} */}
         {/* {<Sidebar admin = {admin} setClose = {setClose}/>} */}
         <RecipeList recipeList={recipeList} />
-        {!close && <Add setClose={setClose} />}
       </div>
     </div>
   );

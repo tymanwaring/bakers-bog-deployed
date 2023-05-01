@@ -16,7 +16,7 @@ const Lantern = () => {
             <div className="row"><br></br></div>
             <div className="row">
                 <div className="col-12 text-center">
-                    <div className={`display-1 text-white ${styles.customFont}`}>The Baker's Bog</div>
+                    <div className={`display-1 text-white ${styles.customFont}`}>The Bakers Bog</div>
                 </div>
             </div>
             <div className="row">

@@ -37,8 +37,8 @@ const ContactText = () => {
             </div>
             <div className="row">
                 <div className="col-12">
-                    <h4 className={styles.txt}>Have a question or want to work together? Use the contact form below and let's link up!</h4>
-                    <h4 className={styles.bottom_padding}>Let's also connect on Pintrest, Instagram, Youtube, and Twitter!</h4>
+                    <h4 className={styles.txt}>Have a question or want to work together? Use the contact form below and let&aposs link up!</h4>
+                    <h4 className={styles.bottom_padding}>Let&aposs also connect on Pintrest, Instagram, Youtube, and Twitter!</h4>
                 </div>
             </div>
 
