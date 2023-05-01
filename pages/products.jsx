@@ -24,12 +24,13 @@ export default function Products({ productList, admin }) {
 
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || ""
+  const BackendURL = process.env.AXIOS_URL + "/api/products"
   let admin = false
 
   if (myCookie.token === process.env.TOKEN) {
     admin = true
   }
-  const res = await axios.get("http://localhost:3000/api/products");
+  const res = await axios.get(BackendURL);
   return {
     props: {
       productList: res.data,
