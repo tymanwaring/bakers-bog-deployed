@@ -15,8 +15,9 @@ const ContactForm = () => {
       email,
       message,
     };
-    console.log(data);
     await axios.post(URL, data);
+
+    document.getElementById("contact_form").reset()
   };
 
   return (
@@ -25,7 +26,7 @@ const ContactForm = () => {
         <div className="col-1"></div>
         <div className="col-10">
           <div className={styles.feedbackForm}>
-            <form onSubmit={handleSubmit}>
+            <form id = "contact_form" onSubmit={handleSubmit}>
               <div className="container text-center">
                 <div className="row">
                   <div className="col-2"></div>
