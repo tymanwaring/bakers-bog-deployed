@@ -55,7 +55,7 @@ const AddRecipe = ({ setClose }) => {
                 prep_time,
                 cook_time,
                 desc,
-                img: url,
+                img: uploadRes.data.secure_url,
                 videoLink,
                 rating,
                 category,
