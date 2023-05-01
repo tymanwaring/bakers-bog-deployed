@@ -31,9 +31,6 @@ const handler = async (req, res) => {
     }
   }
   if (method === "DELETE") {
-    if (!token || token !== process.env.token) {
-      return res.status(401).json("Invalid Permissions")
-    }
     try {
       await Contact.findByIdAndDelete(id);
       res.status(200).json("The order has been deleted!");
