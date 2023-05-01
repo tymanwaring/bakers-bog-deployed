@@ -8,10 +8,11 @@ const Login = () => {
   const [password, setPassword] = useState(null);
   const [error, setError] = useState(false);
   const router = useRouter();
+  const BackendURL = process.env.AXIOS_URL + `/api/login`
 
   const handleClick = async () => {
     try {
-      await axios.post("http://localhost:3000/api/login", {
+      await axios.post(BackendURL, {
         username,
         password,
       });
