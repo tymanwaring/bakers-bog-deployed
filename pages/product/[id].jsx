@@ -48,45 +48,22 @@ const Product = ({ product }) => {
 
 
   return (
-    <div className={styles.background}>
-      <div className={styles.container}>
-        <div className={styles.cover}>
-          <Navbar />
-          <div className={styles.contents}>
-            <div className={styles.side_space}></div>
-            <div className={styles.left}>
-              <div className={styles.imgContainer}>
-                <Image src={product.img} objectFit="contain" layout="fill" alt="" />
-              </div>
-            </div>
-            <div className={styles.padded}>
+    <div className={`${styles.cover} ${styles.container}`}>
+      <Navbar />
+      <div className = {styles.spacer}><br></br></div>
+      <div className={`container h-100`}>
+        <div className="row">
+          <div className={`col-md`}>
+                <div className={styles.imgContainer}>
+                  <Image src={product.img} objectFit="scale-down" height="500" width="600" alt="" />
+                </div>
+          </div>
+          {/* <div class = "col-2"></div> */}
+          <div className={`col-md`}>
+            <div className={styles.contents}>
               <div className={styles.right}>
                 <p className={styles.title}>{product.title} ${price}</p>
                 <p className={styles.desc}>{product.desc}</p>
-                <div>
-                  {isOptions ? (
-                    <div>
-                      <h3 className={styles.choose}>Choose additional ingredients</h3>
-                      <div className={styles.ingredients}>
-                        {product.extraOptions.map(option => (
-                          <div className={styles.option} key={option._id}>
-                            <input
-                              type="checkbox"
-                              id={option.text}
-                              name={option.text}
-                              className={styles.checkbox}
-                              onChange={(e) => handleChange(e, option)}
-                            />
-                            <label htmlFor="double">{option.text}</label>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <div></div>
-                  )}
-                </div>
-
                 <div className={styles.amount}>
                   Amount: <input onChange={(e) => setquantity(e.target.value)} type="number" defaultValue={1} className={styles.quantity} />
                 </div>
@@ -95,10 +72,10 @@ const Product = ({ product }) => {
                 </div>
               </div>
             </div>
-            <div className={styles.side_space}></div>
           </div>
         </div>
       </div>
+      <div className = {styles.spacer}><br></br></div>
     </div>
   );
 };

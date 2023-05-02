@@ -1,7 +1,3 @@
-.background {
-  background-color: black;
-}
-
 .cover{
   background-color: rgba(0, 0, 0, 0.3); 
   background-repeat: no-repeat;
@@ -16,14 +12,13 @@
 
 .container {
   background-color: rgba(0, 0, 0, 1);
+  background-color: black;
   background-image: url("../public/img/Basket.png");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 100vh;
-  height: 100%;
 }
 
 @keyframes backFade {
@@ -31,6 +26,97 @@
     100% { background-color: rgba(0, 0, 0, 0.3); }
 }
 
+
+@keyframes backFade {
+  0% { background-color: rgba(0, 0, 0, 0.6); }
+  100% { background-color: rgba(0, 0, 0, 0.3); }
+}
+
+
+.contents {
+justify-content: center;
+align-items: center;
+text-align: center;
+color: white;
+}
+
+.right {
+background-color: rgba(0, 0, 0, 0.6);
+}
+
+.title {
+font-size: 50px;
+}
+
+.desc {
+font-size: 25px;
+padding-bottom: 30px;
+}
+
+.price {
+color: whitesmoke;
+font-size: 50px;
+}
+
+.amount {
+padding-bottom: 20px;
+font-size: 50px;
+text-align: center;
+}
+
+.spacer {
+padding-bottom: 15vh;
+}
+
+.quantity {
+font-size: 50px;
+background-color: rgba(0, 0, 0, 0);
+text-align: center;
+border: none;
+color: white;
+width: 10rem;
+height: 100px;
+}
+
+.auto {
+margin-top: auto;
+margin-bottom: auto;
+min-height: 100vh;
+}
+
+.imgContainer {
+height: 500px;
+}
+
+/* @media screen and (max-width: 1200px), (max-height: 800px) {
+.imgContainer {
+  display:none;
+  flex: none;
+}
+
+.title {
+  margin: 5px;
+}
+
+.left {
+  display: none;
+}
+
+.right {
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.padded {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
 
 .contents {
   display: flex;
@@ -41,246 +127,60 @@
   color: white;
 }
 
-.side_space {
-  flex: 0.3;
-}
 
-.left {
-  flex: 2;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.right {
-  height: 100%;
-  flex: 1;
-  align-items: center;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding-left: 25px;
-  padding-right: 25px;
-  min-width: 500px;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.imgContainer {
-  width: 60vh;
-  height: 60vh;
-  position: relative;
-}
-
-.title {
+.button {
   font-size: 50px;
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 500px;
+  color: white;
+  border: none;
+  min-height: 8rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 3rem;
 }
 
-.padded {
-  padding-top: 0px;
-  padding-bottom: 5vh;
-}
 
 .desc {
   font-size: 25px;
   padding-bottom: 30px;
 }
 
-.price {
-  color: whitesmoke;
-  font-size: 50px;
-}
-
 .sizes {
-  width: 40%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.size {
-  width: 30px;
-  height: 30px;
-  position: relative;
-  cursor: pointer;
-}
-
-.size:nth-child(2) {
-  width: 40px;
-  height: 40px;
-}
-
-.size:last-child {
-  width: 50px;
-  height: 50px;
-}
-
-.amount {
-  padding-bottom: 20px;
-  font-size: 50px;
-  text-align: center;
-}
-
-.number {
-  position: absolute;
-  top: -5px;
-  right: -20px;
-  background-color: teal;
-  color: white;
-  font-size: 12px;
-  padding: 0 5px;
-  border-radius: 10px;
+  width: 100%;
+  padding: 0px 20px;
 }
 
 .ingredients {
-  display: flex;
-  margin-bottom: 30px;
+  flex-direction: column;
 }
 
 .option {
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-  font-size: 14px;
-  font-weight: 500;
+  margin: 10px;
+  font-size: 18px;
 }
 
 .checkbox {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
 }
 
-.quantity {
-  font-size: 50px;
-  background-color: rgba(0, 0, 0, 0);
-  text-align: center;
-  border: none;
-  color: white;
-  width: 10rem;
-  height: 100px;
-}
-
+.quantity,
 .button {
-  font-size: 50px;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 3rem;
+  height: 50px;
+  padding: 10px 20px;
 }
 
-@media screen and (max-width: 1200px), (max-height: 800px) {
-  .imgContainer {
-    display:none;
-    flex: none;
-  }
-
-  .title {
-    margin: 5px;
-  }
-
-  .left {
-    display: none;
-  }
-
-  .right {
-    height: 100%;
-    align-items: center;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding-left: 25px;
-    padding-right: 25px;
-    margin-top: 0px;
-    padding-top: 0px;
-  }
-
-  .padded {
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-  }
-
-  .contents {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
-    color: white;
-  }
-  
-
-  .button {
-    font-size: 50px;
-    background-color: rgba(0, 0, 0, 0.6);
-    height: 500px;
-    color: white;
-    border: none;
-    min-height: 8rem;
-    font-weight: 500;
-    cursor: pointer;
-    margin-bottom: 3rem;
-  }
-
-
-  .desc {
-    font-size: 25px;
-    padding-bottom: 30px;
-  }
-
-  .sizes {
-    width: 100%;
-    padding: 0px 20px;
-  }
-
-  .ingredients {
-    flex-direction: column;
-  }
-
-  .option {
-    margin: 10px;
-    font-size: 18px;
-  }
-
-  .checkbox {
-    width: 25px;
-    height: 25px;
-  }
-
-  .quantity,
-  .button {
-    height: 50px;
-    padding: 10px 20px;
-  }
-
-  .cover{
-    background-color: rgba(0, 0, 0, 0.3); 
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    animation: backFade 1.5s;
-    min-height: 100vh;
-    height: 100%;
-  }
-  
-  .container {
-    background-color: rgba(0, 0, 0, 1);
-    background-image: url("../public/img/Basket.png");
-    background-repeat: no-repeat;
-    position:absolute;
-    z-index:-1;
-    top:0;
-    left:0;
-    height: 100%;
-    min-height: 120%;
-    width:100%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-attachment: fixed;
-    background-size: auto;
-    background-position: center center;
-
-  }
+.cover{
+  background-color: rgba(0, 0, 0, 0.3); 
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  animation: backFade 1.5s;
+  min-height: 100vh;
+  height: 100%;
 }
+
+} */
