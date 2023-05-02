@@ -10,8 +10,8 @@ const Recipe = ({ recipe }) => {
       <div className={styles.cover}>
         <div className={styles.contents}>
           <div className={`row ${styles.padder}`}>
-            <div className = {`col-3`}></div>
-            <div className = {`col-6 ${styles.top_container}`}>
+            <div className = {`col-1`}></div>
+            <div className = {`col-10 ${styles.top_container}`}>
               <h1 className={styles.title}>{recipe.title}</h1>
               <h2 className = {styles.description}>{recipe.desc}</h2>
               <div className = "row">
@@ -33,24 +33,24 @@ const Recipe = ({ recipe }) => {
               </div>
             </div>
 
-            <div className = "col-3"></div>
+            <div className = "col-1"></div>
           </div>
           <div className = "space_after_title"><br></br></div>
           <div className = "row">
-          <div className = "col-3"></div>
-          <div className = {`col-3 ${styles.top_container}`}>
+          <div className = "col-1"></div>
+          <div className = {`col-5 ${styles.top_container}`}>
             <h3 className={styles.ingredients_header}>Ingredients</h3>
             <h3 className = {styles.header_boarder}><br></br></h3>
             <div className = {styles.ingredients}>
               <ul>
                 {recipe.ingredients?.map((ingredient) => (
-                  <li className={styles.ingredient} key = {ingredient._id}>{ingredient}</li>
+                  <li className={styles.ingredient}>{ingredient}</li>
                 ))}
               </ul>
 
             </div>
           </div>
-          <div className = {`col-3 ${styles.top_container}`}>
+          <div className = {`col-5 ${styles.top_container}`}>
               <div className={styles.img}>
                   <Image src={recipe.img} height="350px" width="350px" alt="" />
               </div>
@@ -59,8 +59,8 @@ const Recipe = ({ recipe }) => {
           </div>
           <div className = "space_after_title"><br></br></div> 
           <div className = "row">
-          <div className = "col-3"></div>
-          <div className = {`col-6 ${styles.top_container}`}>
+          <div className = "col-1"></div>
+          <div className = {`col-10 ${styles.top_container}`}>
           <div className = {styles.paragraphs}>
           <div className = {styles.instructions}>
             Instructions
@@ -72,7 +72,7 @@ const Recipe = ({ recipe }) => {
           </ol>
             </div>
           </div>
-          <div className = "col-3"></div>
+          <div className = "col-1"></div>
           </div>
         </div>
       </div>
