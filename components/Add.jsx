@@ -56,10 +56,11 @@ const Add = ({ setClose }) => {
 
     return (
         <div className={styles.container}>
+            <span onClick={() => setClose(true)} className={styles.close}>
+                X
+            </span>
             <div className={styles.wrapper}>
-                <span onClick={() => setClose(true)} className={styles.close}>
-                    X
-                </span>
+
                 <h1>Add New Product</h1>
                 <div className={styles.item}>
                     <label className={styles.label}>Choose an image</label>
@@ -70,6 +71,7 @@ const Add = ({ setClose }) => {
                     <input
                         className={styles.input}
                         type="text"
+                        placeholder="Hopefully something yummy :)"
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </div>
@@ -78,33 +80,22 @@ const Add = ({ setClose }) => {
                     <textarea
                         rows={4}
                         type="text"
+                        placeholder = "A tastey treat for all to enjoy!"
                         onChange={(e) => setDesc(e.target.value)}
                     />
                 </div>
                 <div className={styles.item}>
-                    <label className={styles.label}>Prices</label>
+                    <label className={styles.label}>Price</label>
                     <div className={styles.priceContainer}>
                         <input
-                            className={`${styles.input} ${styles.inputSm}`}
+                            className={`${styles.priceInput}`}
                             type="number"
-                            placeholder="Small"
+                            placeholder="$5"
                             onChange={(e) => changePrice(e, 0)}
-                        />
-                        <input
-                            className={`${styles.input} ${styles.inputSm}`}
-                            type="number"
-                            placeholder="Medium"
-                            onChange={(e) => changePrice(e, 1)}
-                        />
-                        <input
-                            className={`${styles.input} ${styles.inputSm}`}
-                            type="number"
-                            placeholder="Large"
-                            onChange={(e) => changePrice(e, 2)}
                         />
                     </div>
                 </div>
-                <div className={styles.item}>
+                {/* <div className={styles.item}>
                     <label className={styles.label}>Extra</label>
                     <div className={styles.extra}>
                         <input
@@ -132,7 +123,7 @@ const Add = ({ setClose }) => {
                             </span>
                         ))}
                     </div>
-                </div>
+                </div> */}
                 <button className={styles.addButton} onClick={handleCreate}>
                     Create
                 </button>

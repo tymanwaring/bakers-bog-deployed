@@ -85,6 +85,10 @@
   width: 25%;
 }
 
+.priceInput {
+  width: 100%;
+}
+
 .extra {
   display: flex;
   justify-content: space-between;
@@ -99,6 +103,7 @@
 .extraItem {
   padding: 5px;
   font-size: 14px;
+  margin-bottom: 5px;
   border: 1px solid #333;
   background-color: white;
   color: #333;
