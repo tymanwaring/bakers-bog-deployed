@@ -75,4 +75,4 @@ const CustomerDetails = ({ total, createOrder }) => {
   );
 };
 
-export default customerDetails
+export default CustomerDetails
