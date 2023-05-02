@@ -247,11 +247,11 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
                   </td>
                   <td className={styles.td}>{status[order.status]}</td>
                   <td className={styles.tdStackedBtn}>
-                    <button className={styles.stackedButton} onClick={() => handleStatus(order._id)}>
-                      Next
-                    </button>
                     <button className={styles.stackedButton} onClick={() => handlePrevStatus(order._id)}>
                       Prev
+                    </button>
+                    <button className={styles.stackedButton} onClick={() => handleStatus(order._id)}>
+                      Next
                     </button>
                   </td>
 
