@@ -1,15 +1,14 @@
-import { useState } from 'react';
 import styles from '../styles/Contact.module.css';
-import ContactForm from "../components/ContactForm";
-import ContactText from "../components/ContactText";
-import TestNav from "../components/TestNav";
+import ContactText from '../components/contact/ContactText/ContactText';
+import ContactForm from '../components/contact/contactForm/ContactForm';
+import Navbar from "../components/main/navbar/Navbar";
 
 export default function Contact({ }) {
     return (
         <div className={styles.container}>
 
             <div className={styles.cover}>
-                <TestNav/>
+                <Navbar/>
                 <ContactText></ContactText>
                 <ContactForm></ContactForm>
             </div>

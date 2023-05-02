@@ -2,11 +2,11 @@ import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/Admin.module.css";
-import AddButton from "../../components/AddButton";
-import AddRecipeBtn from "../../components/RecipeAddBtn/AddRecipeBtn";
-import AddRecipe from "../../components/RecipeAddBtn/AddRecipe";
-import Add from "../../components/Add";
-import TestNav from "../../components/TestNav";
+import AddButton from "../../components/product/productAdd/AddButton";
+import AddRecipeBtn from "../../components/recipe/recipeAddBtn/AddRecipeBtn";
+import AddRecipe from "../../components/recipe/recipeAddBtn/AddRecipeModal";
+import Add from "../../components/product/productAdd/AddModal";
+import Navbar from "../../components/main/navbar/Navbar";
 
 const Index = ({ orders, products, recipes, locations, contacts }) => {
   console.log(contacts)
@@ -121,7 +121,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   return (
     <div>
 
-      <TestNav />
+      <Navbar />
       <div className={styles.container}>
 
         <div className={styles.item}>

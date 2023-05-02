@@ -1,9 +1,8 @@
 import styles from "../styles/Locations.module.css";
 import axios from "axios";
 import { useState } from "react";
-import LocationList from "../components/LocationDisplay";
-import TestNav from "../components/TestNav";
-import Footer from "../components/Footer"
+import LocationList from "../components/location/locationWrapper/LocationWrapper";
+import Navbar from "../components/main/navbar/Navbar";
 
 export default function Locations({ locationList, admin }) {
   const [close, setClose] = useState(true)
@@ -11,7 +10,7 @@ export default function Locations({ locationList, admin }) {
     <div className={styles.container}>
       
       <div className={styles.cover}>
-      <TestNav />
+      <Navbar />
         <LocationList locationList={locationList} />
       </div>
     </div>

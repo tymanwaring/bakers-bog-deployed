@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "../../styles/Login.module.css";
-import TestNav from "../../components/TestNav";
+import Navbar from "../../components/main/navbar/Navbar";
 
 const Login = () => {
   const [username, setUsername] = useState(null);
@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <div>
-      <TestNav />
+      <Navbar/>
     <div className={styles.container}>
       
       <div className={styles.wrapper}>

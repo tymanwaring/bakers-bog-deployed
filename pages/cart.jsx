@@ -12,8 +12,8 @@ import { useRouter } from "next/router";
 import { reset } from "../redux/cartSlice";
 import { deleteProduct } from "../redux/cartSlice"
 import { changeTotal } from "../redux/cartSlice"
-import OrderDetails from "../components/orderDetails";
-import TestNav from "../components/TestNav";
+import CustomerDetails from "../components/order/customerDetails";
+import Navbar from "../components/main/navbar/Navbar";
 import { Trash } from 'react-bootstrap-icons';
 
 
@@ -114,7 +114,7 @@ const Cart = ( products ) => {
   return (
     <div className={styles.container}>
       <div className={styles.cover}>
-        <TestNav />
+        <Navbar />
         <div className={styles.contents}>
           <div className={styles.left}>
             <table className={styles.table}>
@@ -199,7 +199,7 @@ const Cart = ( products ) => {
 
             </div>
           </div>
-          {cash && <OrderDetails total={cart.total} createOrder={createOrder} />}
+          {cash && <CustomerDetails total={cart.total} createOrder={createOrder} />}
         </div>
       </div>
     </div>

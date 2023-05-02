@@ -1,18 +1,16 @@
 import styles from "../styles/Recipes.module.css";
 import axios from "axios";
 import { useState } from "react";
-import RecipeList from "../components/RecipeDisplay";
-import TestNav from "../components/TestNav";
-import Sidebar from "../components/Sidebar"
+import RecipeList from "../components/recipe/recipeList/RecipeList";
+import Navbar from "../components/main/navbar/Navbar";
+
 
 export default function Recipes({ recipeList, admin }) {
   const [close, setClose] = useState(true)
   return (
     <div className={styles.container}>
       <div className={styles.cover}>
-        <TestNav />
-        {/* {Scrolling background Make sure it scrolls with the items} */}
-        {/* {<Sidebar admin = {admin} setClose = {setClose}/>} */}
+        <Navbar />
         <RecipeList recipeList={recipeList} />
       </div>
     </div>

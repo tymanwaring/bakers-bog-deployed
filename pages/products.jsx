@@ -1,11 +1,9 @@
 import styles from "../styles/Products.module.css";
 import axios from "axios";
 import { useState } from "react";
-import Add from "../components/Add";
-import AddButton from "../components/AddButton";
-import ProductList from "../components/ProductDisplay";
-import Sidebar from "../components/Sidebar"
-import TestNav from "../components/TestNav";
+import Add from "../components/product/productAdd/AddModal";
+import ProductList from "../components/product/productWrapper/ProductWrapper";
+import Navbar from "../components/main/navbar/Navbar";
 
 export default function Products({ productList, admin }) {
   const [close, setClose] = useState(true)
@@ -13,7 +11,7 @@ export default function Products({ productList, admin }) {
     //Going to have to mess with styling to get the background image to work.
     <div className={styles.container}>
       <div className={styles.cover}>
-        <TestNav />
+        <Navbar />
         {/* {<Sidebar admin = {admin} setClose = {setClose}/>} */}
         <ProductList productList={productList} />
         {!close && <Add setClose={setClose} />}

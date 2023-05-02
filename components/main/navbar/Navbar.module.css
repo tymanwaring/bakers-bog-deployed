@@ -1,0 +1,40 @@
+.clickable {
+    cursor: pointer;
+}
+
+.counter {
+    color: white;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.navBackground {
+    background-color: rgba(0,0,0,.8);
+}
+
+.hover > a{
+    transition: 0.5s ease;
+    color: rgba(255, 255, 255, 1);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+
+
+.hover > a:hover{
+    /* border-top: 4px solid white; */
+    border-bottom: 4px solid rgba(255, 255, 255, 1);
+    padding: 6px 0; 
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    0% { border-bottom: 4px solid rgba(255, 255, 255, 0); }
+    100% { border-bottom: 4px solid rgba(255, 255, 255, 1); }
+}
+
+/* .hover > div:hover{
+    /* border-top: 4px solid white;
+    border-bottom: 4px solid white;
+    padding: 6px 0; 
+} */

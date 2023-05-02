@@ -1,13 +1,12 @@
 import styles from "../../styles/Recipe.module.css";
 import Image from "next/image";
-import { useState } from "react";
 import axios from 'axios';
-import TestNav from "../../components/TestNav";
+import Navbar from "../../components/main/navbar/Navbar";
 
 const Recipe = ({ recipe }) => {
   return (
     <div className={styles.container}>
-      <TestNav />
+      <Navbar />
       <div className={styles.cover}>
         <div className={styles.contents}>
           <div className={`row ${styles.padder}`}>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from 'axios';
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../redux/cartSlice"
-import TestNav from "../../components/TestNav";
+import Navbar from "../../components/main/navbar/Navbar";
 import { Plus } from 'react-bootstrap-icons';
 
 const Product = ({ product }) => {
@@ -51,7 +51,7 @@ const Product = ({ product }) => {
     <div className={styles.background}>
       <div className={styles.container}>
         <div className={styles.cover}>
-          <TestNav />
+          <Navbar />
           <div className={styles.contents}>
             <div className={styles.side_space}></div>
             <div className={styles.left}>

@@ -1,7 +1,7 @@
 import styles from "../../styles/Order.module.css";
 import Image from "next/image";
 import axios from "axios";
-import TestNav from "../../components/TestNav";
+import Navbar from "../../components/main/navbar/Navbar";
 
 const Order = ({ order }) => {
   const status = order.status;
@@ -14,7 +14,7 @@ const Order = ({ order }) => {
   return (
       <div className={styles.container}>
         <div className={styles.cover}>
-          <TestNav />
+          <Navbar />
           <div className={styles.contents}>
             <div className={styles.left}>
               <div className={styles.row}>
