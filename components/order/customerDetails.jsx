@@ -1,7 +1,7 @@
 import styles from "./customerDetails.module.css"
 import { useEffect, useState } from "react";
 
-const customerDetails = ({ total, createOrder }) => {
+const CustomerDetails = ({ total, createOrder }) => {
   const [customer, setCustomer] = useState("");
   const [address, setAddress] = useState("");
   const [active, setActive] = useState(false)

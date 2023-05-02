@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { reset } from "../redux/cartSlice";
 import { deleteProduct } from "../redux/cartSlice"
 import { changeTotal } from "../redux/cartSlice"
-import CustomerDetails from "../components/order/customerDetails";
+import CustomerDetails from "../components/order/CustomerDetails";
 import Navbar from "../components/main/navbar/Navbar";
 import { Trash } from 'react-bootstrap-icons';
 

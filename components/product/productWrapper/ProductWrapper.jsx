@@ -1,7 +1,7 @@
 import styles from "./ProductWrapper.module.css";
 import ProductCard from "../productCard/ProductCard";
 
-const ProductDisplay = ({ productList }) => {
+const ProductWrapper = ({ productList }) => {
   return (
     <div className={styles.container}>
       {/* <div className = {styles.titlePadding}> */}
@@ -16,4 +16,4 @@ const ProductDisplay = ({ productList }) => {
   );
 };
 
-export default ProductDisplay;
+export default ProductWrapper;

@@ -1,7 +1,7 @@
-import styles from "../styles/RecepieDisplay.module.css";
-import RecipeCard from "../RecipeDisplayCard";
+import styles from "./RecepieList.module.css";
+import RecipeCard from "../recipeCard/RecipeCard";
 
-const RecipeDisplay = ({ recipeList }) => {
+const RecipeList = ({ recipeList }) => {
   return (
     <div className={styles.container}>
       <div className={styles.titlePadding}>
@@ -15,4 +15,4 @@ const RecipeDisplay = ({ recipeList }) => {
   );
 };
 
-export default RecipeDisplay;
+export default RecipeList;
