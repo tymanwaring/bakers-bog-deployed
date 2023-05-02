@@ -15,7 +15,7 @@
 
 .container {
   background-color: rgba(0, 0, 0, 1);
-  background-image: url("../public/img/Basket.png");
+  background-image: url("../public/img/basket.png");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -58,6 +58,8 @@
   padding-left: 25px;
   padding-right: 25px;
   min-width: 500px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .imgContainer {
@@ -160,23 +162,50 @@
   border: none;
   font-weight: 500;
   cursor: pointer;
+  margin-bottom: 3rem;
 }
 
-@media screen and (max-width: 480px) {
-  .container {
-    height: auto;
-    text-align: center;
-    flex-direction: column;
-    margin-top: 20px;
-  }
+@media screen and (max-width: 1200px) {
 
   .imgContainer {
-    width: 70vw;
-    height: 70vw;
+    display:none;
   }
 
   .title {
     margin: 5px;
+  }
+
+  .right {
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .padded {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+  }
+  
+
+  .button {
+    font-size: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 500px;
+    color: white;
+    border: none;
+    min-height: 8rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 3rem;
+  }
+
+
+  .desc {
+    font-size: 25px;
+    padding-bottom: 30px;
   }
 
   .sizes {
@@ -202,5 +231,39 @@
   .button {
     height: 50px;
     padding: 10px 20px;
+  }
+
+  .cover{
+    background-color: rgba(0, 0, 0, 0.3); 
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    z-index:-1;
+    top:0;
+    left:0;
+    width:100%;
+    background-position: center center;
+    animation: backFade 1.5s;
+    position:absolute;
+    background-size: auto;
+
+  }
+  
+  .container {
+    background-color: rgba(0, 0, 0, 1);
+    background-image: url("../public/img/basket.png");
+    background-repeat: no-repeat;
+    position:absolute;
+    z-index:-1;
+    top:0;
+    left:0;
+    width:100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+    background-size: auto;
+    background-position: center center;
   }
 }
