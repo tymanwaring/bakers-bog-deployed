@@ -1,5 +1,5 @@
 import styles from '../styles/Contact.module.css';
-import ContactText from '../components/contact/ContactText/ContactText';
+import ContactText from '../components/contact/contactText/ContactText';
 import ContactForm from '../components/contact/contactForm/ContactForm';
 import Navbar from "../components/main/navbar/Navbar";
 
