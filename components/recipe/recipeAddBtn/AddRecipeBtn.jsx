@@ -1,5 +1,5 @@
-import styles from "../../styles/Add.module.css"
-import { CloudPlusFill, FolderPlus, UniversalAccess, Upload } from 'react-bootstrap-icons';
+import styles from "./Add.module.css"
+import { FolderPlus } from 'react-bootstrap-icons';
 
 const AddRecipeBtn = ({ setClose }) => {
     return (
