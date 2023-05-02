@@ -18,7 +18,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
   const status = ["preparing", "on the way", "delivered", "done"];
   const [close, setClose] = useState(true)
   const [closeRec, setCloseRec] = useState(true)
-  const URL  = ("https://www.thebakersbog.com/")
+  const URL = ("https://www.thebakersbog.com/")
 
 
   const handleProductDelete = async (id) => {
@@ -81,7 +81,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
     const currentStatus = item.status;
     const BackendURL = URL + `/api/orders/`
 
-    if (currentStatus < 3) { 
+    if (currentStatus < 3) {
       console.log(item.status)
       try {
         const res = await axios.put(BackendURL + id, {
@@ -94,7 +94,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
       } catch (err) {
         console.log(err);
       }
-  }
+    }
   };
 
   const handlePrevStatus = async (id) => {
@@ -102,7 +102,7 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
     const currentStatus = item.status;
     const BackendURL = URL + `/api/orders/`
 
-    if (currentStatus > 0) { 
+    if (currentStatus > 0) {
       console.log(item.status)
       try {
         const res = await axios.put(BackendURL + id, {
@@ -115,189 +115,187 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
       } catch (err) {
         console.log(err);
       }
-  }
+    }
   };
 
   return (
     <div>
-      
+
       <TestNav />
-    <div className={styles.container}>
-      
-      <div className={styles.item}>
+      <div className={styles.container}>
 
-        {/* Products Table */}
-        <div className = {styles.item}>
-        <h1 className={styles.h1}>Products</h1> 
-        <div className = {styles.addbtn}>
-          {<AddButton setClose={setClose} />}
-          {!close && <Add setClose={setClose} />}
+        <div className={styles.item}>
+
+          {/* Products Table */}
+          <div className={styles.item}>
+            <h1 className={styles.h1}>Products</h1>
+            <div className={styles.addbtn}>
+              {<AddButton setClose={setClose} />}
+              {!close && <Add setClose={setClose} />}
+            </div>
+
+            <table className={styles.table}>
+              <tbody>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>Image</th>
+                  <th className={styles.th}>Id</th>
+                  <th className={styles.th}>Title</th>
+                  <th className={styles.th}>Price</th>
+                  <th className={styles.th}>Action</th>
+                </tr>
+              </tbody>
+              {productList.map((product) => (
+                <tbody key={product._id}>
+                  <tr className={styles.tr}>
+                    <td className={styles.td}>
+                      <Image
+                        src={product.img}
+                        width={50}
+                        height={50}
+                        objectFit="cover"
+                        alt=""
+                      />
+                    </td>
+                    <td className={styles.td}>{product._id.slice(0, 5)}...</td>
+                    <td className={styles.td}>{product.title}</td>
+                    <td className={styles.td}>${product.prices[0]}</td>
+                    <td className={styles.td}>
+                      {/* <button className={styles.button}>Edit</button> */}
+                      <button
+                        className={styles.button}
+                        onClick={() => handleProductDelete(product._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              ))}
+            </table>
+          </div>
+
+
+          {/* Recipes Table */}
+          <div className={styles.item}>
+            <h1 className={styles.h1}>Recipes</h1>
+            <div className={styles.addbtn}>
+              {<AddRecipeBtn setClose={setCloseRec} />}
+              {!closeRec && <AddRecipe setClose={setCloseRec} />}
+            </div>
+            <table className={styles.table}>
+              <tbody>
+                <tr className={styles.tr}>
+                  <th className={styles.th}>Image</th>
+                  <th className={styles.th}>Id</th>
+                  <th className={styles.th}>Title</th>
+                  <th className={styles.th}>Action</th>
+                </tr>
+              </tbody>
+              {recipeList.map((recipe) => (
+                <tbody key={recipe._id}>
+                  <tr className={styles.tr}>
+                    <td className={styles.td}>
+                      <Image
+                        src={recipe.img}
+                        width={50}
+                        height={50}
+                        objectFit="cover"
+                        alt=""
+                      />
+                    </td>
+                    <td className={styles.td}>{recipe._id.slice(0, 5)}...</td>
+                    <td className={styles.td}>{recipe.title}</td>
+                    <td className={styles.td}>
+                      <button
+                        className={styles.button}
+                        onClick={() => handleRecipeDelete(recipe._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              ))}
+            </table>
+          </div>
+
+
         </div>
-        
-        <table className={styles.table}>
-          <tbody>
-            <tr className={styles.tr}>
-              <th className={styles.th}>Image</th>
-              <th className={styles.th}>Id</th>
-              <th className={styles.th}>Title</th>
-              <th className={styles.th}>Price</th>
-              <th className={styles.th}>Action</th>
-            </tr>
-          </tbody>
-          {productList.map((product) => (
-            <tbody key={product._id}>
+        <div className={styles.item}>
+          {/* Orders Table */}
+          <h1 className={styles.h1}>Orders</h1>
+          <table className={styles.table}>
+            <tbody>
               <tr className={styles.tr}>
-                <td className={styles.td}>
-                  <Image
-                    src={product.img}
-                    width={50}
-                    height={50}
-                    objectFit="cover"
-                    alt=""
-                  />
-                </td>
-                <td className={styles.td}>{product._id.slice(0, 5)}...</td>
-                <td className={styles.td}>{product.title}</td>
-                <td className={styles.td}>${product.prices[0]}</td>
-                <td className={styles.td}>
-                  {/* <button className={styles.button}>Edit</button> */}
-                  <button
-                    className={styles.button}
-                    onClick={() => handleProductDelete(product._id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+                <th className={styles.th}>Id</th>
+                <th className={styles.th}>Customer</th>
+                <th className={styles.th}>Total</th>
+                <th className={styles.th}>Payment</th>
+                <th className={styles.th}>Status</th>
+                <th className={styles.th}>Stage</th>
+                <th className={styles.th}>Action</th>
               </tr>
             </tbody>
-          ))}
-        </table>
-        </div>
+            {orderList.map((order) => (
+              <tbody key={order._id}>
+                <tr className={styles.trTitle}>
+                  <td className={styles.td}>{order._id.slice(0, 5)}...</td>
+                  <td className={styles.td}>{order.customer}</td>
+                  <td className={styles.td}>${order.total}</td>
+                  <td className={styles.td}>
+                    {order.method === 0 ? <span>cash</span> : <span>paid</span>}
+                  </td>
+                  <td className={styles.td}>{status[order.status]}</td>
+                  <td className={styles.tdStackedBtn}>
+                    <button className={styles.stackedButton} onClick={() => handleStatus(order._id)}>
+                      Next
+                    </button>
+                    <button className={styles.stackedButton} onClick={() => handlePrevStatus(order._id)}>
+                      Prev
+                    </button>
+                  </td>
 
+                  <td className={styles.td}>
+                    <button className={styles.button} onClick={() => handleOrderDelete(order._id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
 
-        {/* Recipes Table */}
-        <div className = {styles.item}>
-        <h1 className={styles.h1}>Recipes</h1>
-        <div className = {styles.addbtn}>
-          {<AddRecipeBtn setClose={setCloseRec} />}
-          {!closeRec && <AddRecipe setClose={setCloseRec} />}
-        </div>
-        <table className={styles.table}>
-          <tbody>
-            <tr className={styles.tr}>
-              <th className = {styles.th}>Image</th>
-              <th className = {styles.th}>Id</th>
-              <th className = {styles.th}>Title</th>
-              <th className = {styles.th}>Action</th>
-            </tr>
-          </tbody>
-          {recipeList.map((recipe) => (
-            <tbody key={recipe._id}>
+          {/* Contacts Table */}
+          <h1 className={styles.h1}>Contacts</h1>
+          <table className={styles.table}>
+            <tbody className={styles.tbody}>
               <tr className={styles.tr}>
-                <td className = {styles.td}>
-                  <Image
-                    src={recipe.img}
-                    width={50}
-                    height={50}
-                    objectFit="cover"
-                    alt=""
-                  />
-                </td>
-                <td className = {styles.td}>{recipe._id.slice(0, 5)}...</td>
-                <td className = {styles.td}>{recipe.title}</td>
-                <td className = {styles.td}>
-                  <button
-                    className={styles.button}
-                    onClick={() => handleRecipeDelete(recipe._id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+                <th className={styles.th}>Id</th>
+                <th className={styles.th}>Name</th>
+                <th className={styles.th}>Email</th>
+                <th className={styles.th}>Message</th>
+                <th className={styles.th}>Action</th>
               </tr>
             </tbody>
-          ))}
-        </table>
-        </div>
-
-
-      </div>
-      <div className={styles.item}>
-        {/* Orders Table */}
-        <h1 className={styles.h1}>Orders</h1>
-        <table className={styles.table}>
-          <tbody>
-            <tr className={styles.tr}>
-              <th className = {styles.th}>Id</th>
-              <th className = {styles.th}>Customer</th>
-              <th className = {styles.th}>Total</th>
-              <th className = {styles.th}>Payment</th>
-              <th className = {styles.th}>Status</th>
-              <th className = {styles.th}>Stage</th>
-              <th className = {styles.th}>Action</th>
-            </tr>
-          </tbody>
-          {orderList.map((order) => (
-            <tbody key={order._id}>
-              <tr className={styles.trTitle}>
-                <td className = {styles.td}>{order._id.slice(0, 5)}...</td>
-                <td className = {styles.td}>{order.customer}</td>
-                <td className = {styles.td}>${order.total}</td>
-                <td className = {styles.td}>
-                  {order.method === 0 ? <span>cash</span> : <span>paid</span>}
-                </td>
-                <td className = {styles.td}>{status[order.status]}</td>
-                <td className = {styles.td}>
-                  <button className = {styles.button} onClick={() => handleStatus(order._id)}>
-                    Next
-                  </button>
-                  <td className = {styles.td}>
-                  <button className = {styles.button} onClick={() => handlePrevStatus(order._id)}>
-                    Prev
-                  </button>
-                </td>
-                </td>
-
-                <td className = {styles.td}>
-                  <button className = {styles.button} onClick={() => handleOrderDelete(order._id)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
-
-        {/* Contacts Table */}
-        <h1 className={styles.h1}>Contacts</h1>
-        <table className={styles.table}>
-          <tbody className={styles.tbody}>
-            <tr className={styles.tr}>
-              <th className = {styles.th}>Id</th>
-              <th className = {styles.th}>Name</th>
-              <th className = {styles.th}>Email</th>
-              <th className = {styles.th}>Message</th>
-              <th className = {styles.th}>Action</th>
-            </tr>
-          </tbody>
-          {contactList.map((contact) => (
-            <tbody key={contact._id}>
-              <tr className={styles.trTitle}>
-                <td className = {styles.td}>{contact._id.slice(0, 5)}...</td>
-                <td className = {styles.td}>{contact.name}</td>
-                <td className = {styles.td}>{contact.email}</td>
-                <td className = {styles.td}>{contact.message}</td>
-                <td className = {styles.td}>
-                  <button
-                    className={styles.button}
-                    onClick={() => handleContactDelete(contact._id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
+            {contactList.map((contact) => (
+              <tbody key={contact._id}>
+                <tr className={styles.trTitle}>
+                  <td className={styles.td}>{contact._id.slice(0, 5)}...</td>
+                  <td className={styles.td}>{contact.name}</td>
+                  <td className={styles.td}>{contact.email}</td>
+                  <td className={styles.td}>{contact.message}</td>
+                  <td className={styles.td}>
+                    <button
+                      className={styles.button}
+                      onClick={() => handleContactDelete(contact._id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
 
           {/* <h1 className = {styles.h1}>Fixed Table header</h1> */}
           {/* <div className={styles.tblHeader}>
@@ -333,40 +331,40 @@ const Index = ({ orders, products, recipes, locations, contacts }) => {
                 </tbody>
                 </table>
                 </div> */}
-              </div>
-          </div>
-          </div>
-          );
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
 
-          if (myCookie.token !== process.env.TOKEN) {
+  if (myCookie.token !== process.env.TOKEN) {
     return {
-            redirect: {
-            destination: "/admin/login",
-          permanent: false,
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
       },
     };
   }
 
-          const productRes = await axios.get(process.env.AXIOS_URL + "/api/products");
-          const orderRes = await axios.get(process.env.AXIOS_URL+ "/api/orders");
-          const locationRes = await axios.get(process.env.AXIOS_URL + "/api/locations")
-          const recipeRes = await axios.get(process.env.AXIOS_URL + "/api/recipes")
-          const contactRes = await axios.get(process.env.AXIOS_URL + "/api/contacts")
-          
+  const productRes = await axios.get(process.env.AXIOS_URL + "/api/products");
+  const orderRes = await axios.get(process.env.AXIOS_URL + "/api/orders");
+  const locationRes = await axios.get(process.env.AXIOS_URL + "/api/locations")
+  const recipeRes = await axios.get(process.env.AXIOS_URL + "/api/recipes")
+  const contactRes = await axios.get(process.env.AXIOS_URL + "/api/contacts")
 
-          return {
-            props: {
-            orders: orderRes.data,
-          products: productRes.data,
-          locations: locationRes.data,
-          recipes: recipeRes.data,
-          contacts: contactRes.data,
+
+  return {
+    props: {
+      orders: orderRes.data,
+      products: productRes.data,
+      locations: locationRes.data,
+      recipes: recipeRes.data,
+      contacts: contactRes.data,
     },
   };
 };
 
-          export default Index;
+export default Index;
