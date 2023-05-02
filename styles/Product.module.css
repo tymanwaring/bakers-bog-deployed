@@ -14,14 +14,13 @@
 }
 
 .container {
-  background-color: rgba(0, 0, 0, 1);;
+  background-color: rgba(0, 0, 0, 1);
   background-image: url("../public/img/Basket.png");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
   height: calc(100vh);
 }
 
@@ -252,7 +251,7 @@
   
   .container {
     background-color: rgba(0, 0, 0, 1);
-    background-image: url("../public/img/basket.png");
+    background-image: url("../public/img/Basket.png");
     background-repeat: no-repeat;
     position:absolute;
     z-index:-1;
