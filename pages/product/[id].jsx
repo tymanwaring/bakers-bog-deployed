@@ -68,7 +68,7 @@ const Product = ({ product }) => {
                   Amount: <input onChange={(e) => setquantity(e.target.value)} type="number" defaultValue={1} className={styles.quantity} />
                 </div>
                 <div className={styles.btn}>
-                  <button className={styles.button} onClick={handleClick}><span className={styles.icon}><Plus size={96} /></span></button>
+                  <button className={`btn btn-dark ${styles.btn_color}`} onClick={handleClick}><span className={styles.icon}><Plus size={96} /></span></button>
                 </div>
               </div>
             </div>
