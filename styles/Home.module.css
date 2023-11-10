@@ -1,0 +1,31 @@
+.container {
+  background-color: black;
+  background-image: url("../public/img/BakerBog.jpg");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: calc(100vh);
+}
+
+.cover{
+  background-color: rgba(0, 0, 0, 0); 
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  animation: fadeIn 3s;
+  height: calc(100vh);
+}
+
+
+  @keyframes fadeIn {
+    0% { 
+      background-color: rgba(0, 0, 0, 0.3);
+     }
+    100% {
+       background-color: rgba(0, 0, 0, 0); 
+      }
+}

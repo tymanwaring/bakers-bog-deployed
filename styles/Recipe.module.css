@@ -1,0 +1,129 @@
+.cover{
+    background-color: rgba(0, 0, 0, 0.7);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    animation: fadeIn 3s;
+    min-height: 100vh;
+    height: 100%;
+    max-width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    background-color: black;
+    background-image: url("../public/img/bakery_inside.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    height: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .header_boarder {
+    border-top: whitesmoke solid;
+    font-size: 0.1rem;
+
+  }
+
+  .ingredients_header {
+    color: whitesmoke;
+  }
+  
+
+  .ingredient {
+    margin-bottom: 0.3rem;
+    font-size: 1.5rem;
+    color: whitesmoke;
+  }
+
+  .padder {
+    padding-top: 3rem;
+  }
+
+  .contents {
+    text-align: left;
+  }
+
+  .top_container {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .img {
+    text-align: center;
+  }
+
+  .title {
+    color: whitesmoke;
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+
+
+  .desc {
+    font-size: 24px;
+    color: whitesmoke;
+  }
+
+  .prep {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .cook {
+    color: whitesmoke;
+    text-align: center;
+  }
+
+  .level {
+    color: whitesmoke;
+    text-align: center;
+  }
+
+  .paragraph {
+    color: whitesmoke;
+    padding-top: 1.5rem;
+  }
+
+  .instructions {
+    font-size: 1.5rem;
+    color:whitesmoke
+  } 
+
+  .paragraphs {
+    font-size: 1.3rem;
+  }
+
+  .category {
+    text-align: center;
+    color: whitesmoke;
+  }
+
+  .description {
+    color: whitesmoke;
+    text-align: center;
+
+  }
+  
+  @media screen and (max-width: 480px) {
+    .title {
+      text-align: center;
+    }
+  
+    .desc {
+      width: 90%;
+      text-align: center;
+    }
+  }

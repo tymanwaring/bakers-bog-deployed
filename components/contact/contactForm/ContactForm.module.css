@@ -1,0 +1,40 @@
+.pageContainer {
+    height: calc(100vh);
+    display: flex;
+  }
+
+.feedbackForm {
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px 50px 40px;
+    box-shadow: 1px 4px 10px 1px #000000;
+    font-family: sans-serif;
+  }
+  
+  .feedbackForm * {
+      box-sizing: border-box;
+  }
+  
+  .feedbackForm h2{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .feedbackForm input {
+    margin-bottom: 15px;
+    /* background-color: rgba(0, 0, 0, 0.6); */
+  }
+  
+  .feedbackForm button[type=submit] {
+    display: block;
+    margin: 20px auto 0;
+    width: 150px;
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+    color: #eee;
+    font-weight: 700;
+    
+    background-color: rgba(193, 118, 42, 0.6); /* Old browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207cca', endColorstr='#9f58a3',GradientType=1 ); /* IE6-9 */
+  }

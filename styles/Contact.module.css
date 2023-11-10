@@ -1,0 +1,41 @@
+.cover{
+  background-color: rgba(0, 0, 0, 0.3); 
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  animation: fadeIn 1.5s;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.container {
+  background-color: black;
+  background-image: url("../public/img/mail_box.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
+  height: 100%;
+}
+
+@keyframes fadeIn {
+  0% {
+    background-color: rgba(0, 0, 0, 0.6);  
+   }
+  100% {
+      background-color: rgba(0, 0, 0, 0.3); 
+    }
+}
+
+@keyframes fadeInTxt {
+  0% {
+    opacity: 0%;
+   }
+  100% {
+      opacity: 100%;
+    }
+}

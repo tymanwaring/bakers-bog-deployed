@@ -1,0 +1,193 @@
+
+
+.cover{
+  background-color: rgba(0, 0, 0, 0.3); 
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  animation: backFade 1.5s;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 1);
+  background-image: url("../public/img/Basket.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  height: 100%;
+}
+
+@keyframes backFade {
+    0% { background-color: rgba(0, 0, 0, 0.6); }
+    100% { background-color: rgba(0, 0, 0, 0.3); }
+}
+
+.contents {
+  color: white;
+  padding: 50px;
+  display: flex;
+}
+
+.mid {
+  flex: 0.1;
+}
+
+.left {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding-left: 5rem;
+  padding-top: 1rem;
+  flex: 2;
+}
+
+.hidden {
+  display: none;
+}
+
+.right {
+  flex: 1;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.imgContainer {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.prodTable {
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+
+.spacing {
+  padding: 1rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2rem;
+}
+
+.tr {
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+  font-weight: 500;
+  color: white;
+  font-size: 20px;
+}
+
+.wrapper {
+  width: 90%;
+  max-height: 300px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 50px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+.trash {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  display: block;
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+}
+
+.totalTextTitle {
+  margin-right: 10px;
+  font-size: 50px;
+}
+
+.button {
+  height: 30px;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .trTitle{
+    display: none;
+  }
+
+  .tr{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .imgContainer{
+    width: 35vw;
+    height: 35vw;
+  }
+
+  .name,.total{
+    font-size: 24px;
+  }
+
+  .extras,.price,.quantity{
+    font-size: 22px;
+  }
+
+  .price::before{
+    content: "Price: ";
+    font-weight: 500;
+  }
+  .quantity::before{
+    content: "Quantity: ";
+    font-weight: 500;
+  }
+  .total::before{
+    content: "Total: ";
+    font-weight: 500;
+  }
+
+  .wrapper{
+    width: 100%;
+  }
+}
+
+.paymentMethods {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payButton {
+  padding: 10px 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  background-color: white;
+  color:#333;
+  font-weight: bold;
+  border-radius: 5px;
+}
