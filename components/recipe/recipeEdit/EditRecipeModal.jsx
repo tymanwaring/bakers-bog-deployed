@@ -100,7 +100,7 @@ const EditRecipe = ({ recipe, setEditRecipe, setRecipeList }) => {
         imageUrl = uploadRes.data.secure_url;
       }
 
-      const res = await axios.put(`/api/recipes/${recipe._id}`, {
+      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/recipes/${recipe._id}`, {
         title,
         desc,
         img: imageUrl,

@@ -81,7 +81,7 @@ const AddRecipe = ({ setClose, setRecipeList }) => {
                 paragraphs,
             };
 
-            const response = await axios.post("/api/recipes", newRecipe);
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/recipes`, newRecipe);
             setRecipeList(prev => [...prev, response.data]);
             setClose(true);
         } catch (err) {

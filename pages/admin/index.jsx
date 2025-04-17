@@ -122,7 +122,6 @@ const Index = ({ recipes, locations }) => {
 };
 
 export const getServerSideProps = async (ctx) => {
-  const URL = "https://www.thebakersbog.com/";
   const myCookie = ctx.req?.cookies || "";
 
   if (myCookie.token !== process.env.TOKEN) {
@@ -134,15 +133,26 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  const recipeRes = await axios.get(URL + `/api/recipes`);
-  const locationRes = await axios.get(URL + `/api/locations`);
+  try {
+    const recipeRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/recipes`);
+    const locationRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/locations`);
 
-  return {
-    props: {
-      recipes: recipeRes.data,
-      locations: locationRes.data,
-    },
-  };
+    return {
+      props: {
+        recipes: recipeRes.data,
+        locations: locationRes.data,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      props: {
+        recipes: [],
+        locations: [],
+        error: "Failed to fetch data"
+      },
+    };
+  }
 };
 
 export default Index;
