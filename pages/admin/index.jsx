@@ -2,342 +2,127 @@ import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/Admin.module.css";
-import AddButton from "../../components/product/productAdd/AddButton";
 import AddRecipeBtn from "../../components/recipe/recipeAddBtn/AddRecipeBtn";
 import AddRecipe from "../../components/recipe/recipeAddBtn/AddRecipeModal";
-import Add from "../../components/product/productAdd/AddModal";
+import EditRecipe from "../../components/recipe/recipeEdit/EditRecipeModal";
 import Navbar from "../../components/main/navbar/Navbar";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../../components/ui/table";
 
-const Index = ({ orders, products, recipes, locations, contacts }) => {
-  console.log(contacts)
-  const [productList, setProductList] = useState(products);
-  const [orderList, setOrderList] = useState(orders);
+const Index = ({ recipes, locations }) => {
   const [recipeList, setRecipeList] = useState(recipes);
-  const [contactList, setContactList] = useState(contacts);
   const [locationList, setLocationList] = useState(locations);
-  const status = ["preparing", "on the way", "delivered", "done"];
-  const [close, setClose] = useState(true)
-  const [closeRec, setCloseRec] = useState(true)
-  const URL = ("https://www.thebakersbog.com/")
-
-
-  const handleProductDelete = async (id) => {
-    console.log(id);
-    const BackendURL = URL + `/api/products/` + id
-    console.log(BackendURL)
-    try {
-      const res = await axios.delete(
-        BackendURL
-      );
-      setProductList(productList.filter((product) => product._id !== id));
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  const handleContactDelete = async (id) => {
-    console.log(id);
-    const BackendURL = URL + `/api/contacts/`
-    console.log(BackendURL)
-    try {
-      const res = await axios.delete(
-        BackendURL + id
-      );
-      setContactList(contactList.filter((contact) => contact._id !== id));
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const [closeRec, setCloseRec] = useState(true);
+  const [editRecipe, setEditRecipe] = useState(null);
+  const [deleteError, setDeleteError] = useState(null);
 
   const handleRecipeDelete = async (id) => {
-    console.log(id);
-    const BackendURL = URL + `/api/recipes/`
     try {
-      const res = await axios.delete(
-        BackendURL + id
-      );
-      console.log(res)
-      setRecipeList(recipeList.filter((recpie) => recpie._id !== id));
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  const handleOrderDelete = async (id) => {
-    console.log(id)
-    const BackendURL = URL + `/api/orders/`
-    try {
-      const res = await axios.delete(
-        BackendURL + id
-      );
-      setOrderList(orderList.filter((order) => order._id !== id));
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  const handleStatus = async (id) => {
-    const item = orderList.filter((order) => order._id === id)[0];
-    const currentStatus = item.status;
-    const BackendURL = URL + `/api/orders/`
-
-    if (currentStatus < 3) {
-      console.log(item.status)
-      try {
-        const res = await axios.put(BackendURL + id, {
-          status: currentStatus + 1,
-        });
-        setOrderList([
-          res.data,
-          ...orderList.filter((order) => order._id !== id),
-        ]);
-      } catch (err) {
-        console.log(err);
+      setDeleteError(null);
+      const response = await axios.delete(`/api/recipes/${id}`);
+      if (response.status === 200) { 
+        setRecipeList(recipeList.filter((recipe) => recipe._id !== id));
       }
+    } catch (err) {
+      console.error("Error deleting recipe:", err);
+      setDeleteError(err.response?.data?.message || "Error deleting recipe");
     }
   };
 
-  const handlePrevStatus = async (id) => {
-    const item = orderList.filter((order) => order._id === id)[0];
-    const currentStatus = item.status;
-    const BackendURL = URL + `/api/orders/`
-
-    if (currentStatus > 0) {
-      console.log(item.status)
-      try {
-        const res = await axios.put(BackendURL + id, {
-          status: currentStatus - 1,
-        });
-        setOrderList([
-          res.data,
-          ...orderList.filter((order) => order._id !== id),
-        ]);
-      } catch (err) {
-        console.log(err);
-      }
-    }
+  const handleRecipeEdit = async (recipe) => {
+    setEditRecipe(recipe);
   };
 
   return (
-    <div>
-
+    <div className="min-h-screen bg-amber-50/30">
       <Navbar />
-      <div className={styles.container}>
-
-        <div className={styles.item}>
-
-          {/* Products Table */}
-          <div className={styles.item}>
-            <h1 className={styles.h1}>Products</h1>
-            <div className={styles.addbtn}>
-              {<AddButton setClose={setClose} />}
-              {!close && <Add setClose={setClose} />}
-            </div>
-
-            <table className={styles.table}>
-              <tbody>
-                <tr className={styles.tr}>
-                  <th className={styles.th}>Image</th>
-                  <th className={styles.th}>Id</th>
-                  <th className={styles.th}>Title</th>
-                  <th className={styles.th}>Price</th>
-                  <th className={styles.th}>Action</th>
-                </tr>
-              </tbody>
-              {productList.map((product) => (
-                <tbody key={product._id}>
-                  <tr className={styles.tr}>
-                    <td className={styles.td}>
-                      <Image
-                        src={product.img}
-                        width={50}
-                        height={50}
-                        objectFit="cover"
-                        alt=""
-                      />
-                    </td>
-                    <td className={styles.td}>{product._id.slice(0, 5)}...</td>
-                    <td className={styles.td}>{product.title}</td>
-                    <td className={styles.td}>${product.prices[0]}</td>
-                    <td className={styles.td}>
-                      {/* <button className={styles.button}>Edit</button> */}
-                      <button
-                        className={styles.button}
-                        onClick={() => handleProductDelete(product._id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              ))}
-            </table>
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <h1 className="text-3xl font-serif mb-8 text-amber-900">Recipe Management</h1>
+        {deleteError && (
+          <div className="mb-4 p-4 bg-red-50 border border-red-200 text-red-600 rounded-md font-serif">
+            {deleteError}
           </div>
-
-
-          {/* Recipes Table */}
-          <div className={styles.item}>
-            <h1 className={styles.h1}>Recipes</h1>
-            <div className={styles.addbtn}>
-              {<AddRecipeBtn setClose={setCloseRec} />}
-              {!closeRec && <AddRecipe setClose={setCloseRec} />}
-            </div>
-            <table className={styles.table}>
-              <tbody>
-                <tr className={styles.tr}>
-                  <th className={styles.th}>Image</th>
-                  <th className={styles.th}>Id</th>
-                  <th className={styles.th}>Title</th>
-                  <th className={styles.th}>Action</th>
-                </tr>
-              </tbody>
+        )}
+        <div className="mb-8">
+          <Table>
+            <TableHeader>
+              <TableRow className="border-b border-amber-200">
+                <TableHead className="w-[80px] font-serif text-amber-900">Image</TableHead>
+                <TableHead className="w-[80px] font-serif text-amber-900">ID</TableHead>
+                <TableHead className="font-serif text-amber-900">Title</TableHead>
+                <TableHead className="w-[240px] text-right font-serif text-amber-900">
+                  <div className="flex justify-end gap-2 items-center">
+                    Actions
+                    <AddRecipeBtn setClose={setCloseRec} />
+                  </div>
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {recipeList.map((recipe) => (
-                <tbody key={recipe._id}>
-                  <tr className={styles.tr}>
-                    <td className={styles.td}>
+                <TableRow key={recipe._id} className="border-b border-amber-100 hover:bg-amber-50/50">
+                  <TableCell>
+                    <div className="h-10 w-10">
                       <Image
                         src={recipe.img}
-                        width={50}
-                        height={50}
-                        objectFit="cover"
-                        alt=""
+                        width={40}
+                        height={40}
+                        alt={recipe.title}
+                        className="object-cover rounded"
                       />
-                    </td>
-                    <td className={styles.td}>{recipe._id.slice(0, 5)}...</td>
-                    <td className={styles.td}>{recipe.title}</td>
-                    <td className={styles.td}>
+                    </div>
+                  </TableCell>
+                  <TableCell className="font-mono text-sm text-amber-700">
+                    {recipe._id.slice(0, 5)}...
+                  </TableCell>
+                  <TableCell className="font-serif text-amber-900">{recipe.title}</TableCell>
+                  <TableCell className="text-right">
+                    <div className="flex justify-end gap-2">
                       <button
-                        className={styles.button}
-                        onClick={() => handleRecipeDelete(recipe._id)}
+                        className="px-4 py-1.5 text-sm bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100 rounded-md font-serif transition-colors"
+                        onClick={() => handleRecipeEdit(recipe)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="px-4 py-1.5 text-sm bg-white text-red-600 border border-red-200 hover:bg-red-50 rounded-md font-serif transition-colors"
+                        onClick={() => {
+                          if (window.confirm('Are you sure you want to delete this recipe?')) {
+                            handleRecipeDelete(recipe._id);
+                          }
+                        }}
                       >
                         Delete
                       </button>
-                    </td>
-                  </tr>
-                </tbody>
+                    </div>
+                  </TableCell>
+                </TableRow>
               ))}
-            </table>
-          </div>
-
-
-        </div>
-        <div className={styles.item}>
-          {/* Orders Table */}
-          <h1 className={styles.h1}>Orders</h1>
-          <table className={styles.table}>
-            <tbody>
-              <tr className={styles.tr}>
-                <th className={styles.th}>Id</th>
-                <th className={styles.th}>Customer</th>
-                <th className={styles.th}>Total</th>
-                <th className={styles.th}>Payment</th>
-                <th className={styles.th}>Status</th>
-                <th className={styles.th}>Stage</th>
-                <th className={styles.th}>Action</th>
-              </tr>
-            </tbody>
-            {orderList.map((order) => (
-              <tbody key={order._id}>
-                <tr className={styles.trTitle}>
-                  <td className={styles.td}>{order._id.slice(0, 5)}...</td>
-                  <td className={styles.td}>{order.customer}</td>
-                  <td className={styles.td}>${order.total}</td>
-                  <td className={styles.td}>
-                    {order.method === 0 ? <span>cash</span> : <span>paid</span>}
-                  </td>
-                  <td className={styles.td}>{status[order.status]}</td>
-                  <td className={styles.tdStackedBtn}>
-                    <button className={styles.stackedButton} onClick={() => handlePrevStatus(order._id)}>
-                      Prev
-                    </button>
-                    <button className={styles.stackedButton} onClick={() => handleStatus(order._id)}>
-                      Next
-                    </button>
-                  </td>
-
-                  <td className={styles.td}>
-                    <button className={styles.button} onClick={() => handleOrderDelete(order._id)}>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            ))}
-          </table>
-
-          {/* Contacts Table */}
-          <h1 className={styles.h1}>Contacts</h1>
-          <table className={styles.table}>
-            <tbody className={styles.tbody}>
-              <tr className={styles.tr}>
-                <th className={styles.th}>Id</th>
-                <th className={styles.th}>Name</th>
-                <th className={styles.th}>Email</th>
-                <th className={styles.th}>Message</th>
-                <th className={styles.th}>Action</th>
-              </tr>
-            </tbody>
-            {contactList.map((contact) => (
-              <tbody key={contact._id}>
-                <tr className={styles.trTitle}>
-                  <td className={styles.td}>{contact._id.slice(0, 5)}...</td>
-                  <td className={styles.td}>{contact.name}</td>
-                  <td className={styles.td}>{contact.email}</td>
-                  <td className={styles.td}>{contact.message}</td>
-                  <td className={styles.td}>
-                    <button
-                      className={styles.button}
-                      onClick={() => handleContactDelete(contact._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            ))}
-          </table>
-
-          {/* <h1 className = {styles.h1}>Fixed Table header</h1> */}
-          {/* <div className={styles.tblHeader}>
-            <table className = {styles.table} cellpadding="0" cellspacing="0" border="0">
-              <thead className = {styles.thead}>
-                <tr className = {styles.tr}>
-                  <th className = {styles.th}>Code</th>
-                  <th className = {styles.th}>Company</th>
-                  <th className = {styles.th}>Price</th>
-                  <th className = {styles.th}>Change</th>
-                  <th className = {styles.th}>Change %</th>
-                </tr>
-              </thead>
-            </table>
-          </div>
-          <div className={styles.tblContent}>
-            <table className = {styles.table} cellpadding="0" cellspacing="0" border="0">
-              <tbody>
-                <tr className = {styles.tr}>
-                  <td className = {styles.td}>AAC</td>
-                  <td className = {styles.td}>AUSTRALIAN COMPANY </td>
-                  <td className = {styles.td}>$1.38</td>
-                  <td className = {styles.td}>+2.01</td>
-                  <td className = {styles.td}>-0.36%</td>
-                </tr>
-                <tr className = {styles.tr}>
-                  <td className = {styles.td}>AAD</td>
-                  <td className = {styles.td}>AUSENCO</td>
-                  <td className = {styles.td}>$2.38</td>
-                  <td className = {styles.td}>-0.01</td>
-                  <td className = {styles.td}>-1.36%</td>
-                </tr>
-                </tbody>
-                </table>
-                </div> */}
+            </TableBody>
+          </Table>
         </div>
       </div>
+
+      {!closeRec && <AddRecipe setClose={setCloseRec} setRecipeList={setRecipeList} />}
+      {editRecipe && (
+        <EditRecipe
+          recipe={editRecipe}
+          setEditRecipe={setEditRecipe}
+          setRecipeList={setRecipeList}
+        />
+      )}
     </div>
   );
 };
 
 export const getServerSideProps = async (ctx) => {
+  const URL = "https://www.thebakersbog.com/";
   const myCookie = ctx.req?.cookies || "";
 
   if (myCookie.token !== process.env.TOKEN) {
@@ -349,20 +134,13 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  const productRes = await axios.get(process.env.AXIOS_URL + "/api/products");
-  const orderRes = await axios.get(process.env.AXIOS_URL + "/api/orders");
-  const locationRes = await axios.get(process.env.AXIOS_URL + "/api/locations")
-  const recipeRes = await axios.get(process.env.AXIOS_URL + "/api/recipes")
-  const contactRes = await axios.get(process.env.AXIOS_URL + "/api/contacts")
-
+  const recipeRes = await axios.get(URL + `/api/recipes`);
+  const locationRes = await axios.get(URL + `/api/locations`);
 
   return {
     props: {
-      orders: orderRes.data,
-      products: productRes.data,
-      locations: locationRes.data,
       recipes: recipeRes.data,
-      contacts: contactRes.data,
+      locations: locationRes.data,
     },
   };
 };

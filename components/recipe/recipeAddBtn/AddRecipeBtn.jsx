@@ -1,13 +1,12 @@
 import styles from "./Add.module.css"
-import { FolderPlus } from 'react-bootstrap-icons';
 
 const AddRecipeBtn = ({ setClose }) => {
     return (
-        <div
+        <button
             onClick={() => setClose(false)}
-            className={styles.mainAddButton}>
-            <span className={styles.icon}><FolderPlus size='xs' /></span>
-        </div>
+            className="px-4 py-1.5 text-sm bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100 rounded-md font-serif transition-colors">
+            Add
+        </button>
     )
 }
 

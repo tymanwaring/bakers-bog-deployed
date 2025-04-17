@@ -1,66 +1,82 @@
 import Image from "next/image";
-import styles from "./Navbar.module.css";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
-  const quantity = useSelector(state => state.cart.quantity)
+  const quantity = useSelector(state => state.cart.quantity);
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (path) => {
+    return pathname === path;
+  };
+
   return (
-    <div className={styles.navFade}>
-      <nav className={`${styles.navBackground} navbar navbar-dark navbar-expand-lg p-3 sticky-top `} id="headerNav">
-        <div className="container-fluid">
-          <a className="navbar-brand d-block d-lg-none" href="#">
-            <Link href="/#" passHref>
-              <Image src="/img/Logo.png" alt="" width="50px" height="50px" />
+    <div className="sticky top-0 z-50">
+      <nav className="bg-black/80 px-4 py-3 backdrop-blur-sm font-[-apple-system,BlinkMacSystemFont,'Segoe_UI',Roboto,Oxygen,Ubuntu,Cantarell,'Fira_Sans','Droid_Sans','Helvetica_Neue',sans-serif]">
+        <div className="max-w-7xl mx-auto relative">
+          {/* Mobile Logo & Button Container */}
+          <div className="flex justify-between items-center lg:hidden">
+            <Link href="/#">
+              <Image src="/img/Logo.png" alt="Baker's Bog Logo" width={50} height={50} className="w-[50px] h-[50px]" />
             </Link>
-          </a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
 
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul className="navbar-nav mx-auto">
-              <li className={`${styles.hover} nav-item`}>
-                <Link href="/products" passHref>
-                  <a className="nav-link mx-2 mt-3 active">Products</a>
-                </Link>
-              </li>
-              <li className={`${styles.hover}`}>
-                <Link href="/recipes" passHref>
-                  <a className="nav-link mx-2 mt-3 active">Recipes</a>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
+
+          {/* Desktop & Mobile Menu */}
+          <div className={`${isOpen ? 'block' : 'hidden'} lg:block w-full`}>
+            <ul className="flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-8 py-4 lg:py-0">
+              <li className="group">
+                <Link 
+                  href="/recipes" 
+                  className={`block py-2 text-white hover:text-white transition-all duration-300 relative font-serif text-lg ${isActive('/recipes') ? 'after:w-full font-semibold' : 'font-normal'} group-hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300`}
+                >
+                  Recipes
                 </Link>
               </li>
 
-              <li className="nav-item d-none d-lg-block">
-                <Link href="/#" passHref>
-                  <a className="nav-link mx-2 mt-1" href="#">
-                    <Image src="/img/Logo.png" alt="" width="50px" height="50px" />
-                    {/* <img src="/static_files/images/logos/logo_2_white.png" height="80" /> */}
-                  </a>
-                </Link>
-              </li>
-              <li className={`${styles.hover}`}>
-                <Link href="/locations" passHref>
-                  <a className="nav-link mx-2 mt-3 active">Locations</a>
+              {/* Desktop Logo */}
+              <li className="hidden lg:block">
+                <Link href="/#" className="block">
+                  <Image src="/img/Logo.png" alt="Baker's Bog Logo" width={50} height={50} className="w-[50px] h-[50px]" />
                 </Link>
               </li>
 
-              <li className={`${styles.hover}`}>
-                <Link href="/contact" passHref>
-                  <a className="nav-link mx-2 mt-3 active">Contact</a>
-                </Link>
-              </li>
-
-              <li className={`${styles.clickable} ${styles.hover}`}>
-                <Link href="/cart" passHref>
-                  <div className="flex-row-reverse">
-                    <a className="nav-link mx-2 mt-1">
-                      <div>
-                        <Image src="/img/cart.png" alt="" width="50px" height="50px" />
-                        {quantity}
-                      </div>
-                    </a>
-                  </div>
+              <li className="group">
+                <Link 
+                  href="/locations" 
+                  className={`block py-2 text-white hover:text-white transition-all duration-300 relative font-serif text-lg ${isActive('/locations') ? 'after:w-full font-semibold' : 'font-normal'} group-hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300`}
+                >
+                  Locations
                 </Link>
               </li>
             </ul>
